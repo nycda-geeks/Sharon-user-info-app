@@ -1,0 +1,25 @@
+{
+  "name": "Sharon-user-info-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "allusers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nycda-geeks/Sharon-user-info-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nycda-geeks/Sharon-user-info-app/issues"
+  },
+  "homepage": "https://github.com/nycda-geeks/Sharon-user-info-app#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
+  }
+}
