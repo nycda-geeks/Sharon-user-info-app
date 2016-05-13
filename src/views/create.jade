@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+    body
+
+    a(href='/') Show users
+    p
+    a(href='/search') Search users
+
+    br
+    br
+
+    h2 Create users
+
+    form(name="createUser", action="/add", method="post")
+        div.input
+            span.label Create firstname  
+            input(type="text", name="createFirstname")
+        div.input
+            span.label Create lastname  
+            input(type="text", name="createLastname")
+        div.input
+            span.label Create e-mail  address
+            input(type="text", name="createEmail")
+        div.actions
+            input(type="submit", value="Create")

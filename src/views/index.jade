@@ -2,6 +2,14 @@ doctype html
 html
 	head
 	body
-		h2 Users
-		each name in names
-			p #{name.firstname} #{name.lastname}
+
+	a(href='/search') Search users
+	p  
+	a(href='/create') Create users
+
+	br
+	br
+
+	h2 Users
+	each name in names
+		p #{name.firstname} #{name.lastname}

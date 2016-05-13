@@ -2,11 +2,19 @@ doctype html
 html
     head
     body
-        h2 Search users
 
-        form(name="searchUser", method="post")
+    a(href='/') Show users
+    p
+    a(href='/create') Create users
+
+    br
+    br
+
+    h2 Search users
+
+    form(name="searchUser", action="/result", method="post")
         div.input
-            span.label Title
-            input(type="text", name="title")
+            span.label Search name  
+            input(type="text", name="userinput")
         div.actions
-            input(type="submit", value="add")
+            input(type="submit", value="search")
