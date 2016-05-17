@@ -1,7 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var fs = require('fs')
-var filereader = require('./src/filereader.js')
+var filereader = require('./filereader.js')
 var app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 
