@@ -34,7 +34,8 @@ app.use(express.static('./public/js'))
 // jQuery / AJAX
 app.post( '/ajax', ( req, res ) => {
 
-	var showNames = []
+	var showNames = {}
+	var totalUsers = []
 	
 	filereader.JSONreader('./users.json', 
 		function (parsedJSON){
@@ -56,14 +57,13 @@ app.post( '/ajax', ( req, res ) => {
 				// console.log(voornaam + achternaam)
 
 				if( stringNr != -1 || stringNr2 != -1 || stringNr3 != -1 ){
-
-					var totalName = parsedJSON[i].firstname + " " + parsedJSON[i].lastname
-					showNames.push(totalName)
+					showNames = parsedJSON[i]
+					totalUsers.push(showNames)
 
 				} 
 			}
 
-		res.send(showNames)
+		res.send(totalUsers)
 	})
 
 })

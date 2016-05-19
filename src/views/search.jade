@@ -14,13 +14,15 @@ html
 
     h2 Search users
 
-    form(name="searchUser", action="/result", method="post")
+    form(name="searchUser", action="/result", method="post", autocomplete="off")
         div.input
             span.label Search name  
-            input(type="text", name="userinput", id="searchfield")
+            input(list="displayname", type="text", name="userinput", id="searchfield")
+            datalist#displayname
         div.actions
             input(type="submit", value="search")
-
-    div#displaynames
+        
     
-        p#userName
+
+
+        

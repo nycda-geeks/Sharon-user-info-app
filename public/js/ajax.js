@@ -32,11 +32,15 @@ $ ( document ).ready( function () {
 		}
 		console.log(inputLetters)
 
-		$.post ('/ajax', inputLetters, function( data ){
+		$.post ('/ajax', inputLetters, function(data){
 
 			console.log(data)
-			$ ( '#userName' ).text (data + " ")
+			$('#displayname').empty()
 
+			for (person in data){
+			$ ( '#displayname' ).append ('<option>' + data[person].firstname + " " + 
+				data[person].lastname + '</option>')
+			}
 		})
 
 	})
