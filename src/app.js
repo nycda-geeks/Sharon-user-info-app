@@ -28,22 +28,72 @@ app.get('/search', function(req, res){
 
 } );
 
+
+app.use(express.static('./public/js'))
+
+// jQuery / AJAX
+app.post( '/ajax', ( req, res ) => {
+
+	var showNames = []
+	
+	filereader.JSONreader('./users.json', 
+		function (parsedJSON){
+			//console.log(req.body.userinput)
+
+			for( var i = 0; i < parsedJSON.length; i ++ ){
+
+				var inputLettersVar = req.body.userinput.toLowerCase()
+
+				var voornaam = parsedJSON[i].firstname.toLowerCase()
+				var achternaam = parsedJSON[i].lastname.toLowerCase()
+				var firstLastName = voornaam + " " + achternaam
+
+				var stringNr = voornaam.indexOf(inputLettersVar)
+				var stringNr2 = achternaam.indexOf(inputLettersVar)
+				var stringNr3 = firstLastName.indexOf(inputLettersVar)
+
+				// console.log(stringNr)
+				// console.log(voornaam + achternaam)
+
+				if( stringNr != -1 || stringNr2 != -1 || stringNr3 != -1 ){
+
+					var totalName = parsedJSON[i].firstname + " " + parsedJSON[i].lastname
+					showNames.push(totalName)
+
+				} 
+			}
+
+		res.send(showNames)
+	})
+
+})
+
+
+
 app.post('/result', function(req, res){
 
 	var storeUser = []
-	var usersearch = req.body.userinput
+	var usersearch = req.body.userinput.toLowerCase()
+
 	console.log("post")
 	filereader.JSONreader('./users.json', function (parsedJSON){
-		console.log('filereader werkt')
+		// console.log('filereader werkt')
+
 		for( i=0; i<parsedJSON.length; i++ ){
-			if(usersearch == parsedJSON[i].firstname || usersearch == parsedJSON[i].lastname){
+
+			var voornaam = parsedJSON[i].firstname.toLowerCase()
+			var achternaam = parsedJSON[i].lastname.toLowerCase()
+			var firstLastName = voornaam + " " + achternaam
+
+			if(usersearch == voornaam || usersearch == achternaam 
+				|| usersearch == firstLastName){
 				storeUser.push(usersearch)
 				var userFirst = parsedJSON[i].firstname
 				var userLast = parsedJSON[i].lastname
 				console.log('pushed')
 			}
-
 		}
+
 		if(storeUser.length > 0){
 			res.send("Name user: " + userFirst + " " + userLast)
 		} else {

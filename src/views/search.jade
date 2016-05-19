@@ -1,6 +1,8 @@
 doctype html
 html
     head
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js")
+        script(src="ajax.js")
     body
 
     a(href='/') Show users
@@ -15,6 +17,10 @@ html
     form(name="searchUser", action="/result", method="post")
         div.input
             span.label Search name  
-            input(type="text", name="userinput")
+            input(type="text", name="userinput", id="searchfield")
         div.actions
             input(type="submit", value="search")
+
+    div#displaynames
+    
+        p#userName
