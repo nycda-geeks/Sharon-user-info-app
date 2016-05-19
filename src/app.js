@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.set('views', './src/views');
 app.set('view engine', 'jade')
 
+app.use(express.static('./public/js'))
+app.use(express.static('./public/css'))
+
 app.get('/', function(req, res){
 
 	filereader.JSONreader('./users.json', 
@@ -28,8 +31,6 @@ app.get('/search', function(req, res){
 
 } );
 
-
-app.use(express.static('./public/js'))
 
 // jQuery / AJAX
 app.post( '/ajax', ( req, res ) => {

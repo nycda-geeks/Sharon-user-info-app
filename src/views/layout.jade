@@ -1,0 +1,22 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/style.css', type='text/css')
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js")
+		script(src="ajax.js")
+
+	body
+		#navbar-fixed
+			#nav-wrapper
+				ul
+					li
+						a(href='/') Show users
+						a(href='http://localhost:3000/search') Search users
+						a(href='http://localhost:3000/create') Create users
+
+	br
+	br
+
+	#content
+		block content
