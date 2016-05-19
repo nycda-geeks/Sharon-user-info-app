@@ -26,22 +26,45 @@
 
 $ ( document ).ready( function () {
 	console.log('dom is ready')
-	$ ( '#searchfield' ).keyup (function(){
+
+
+	var fireRequest = true
+
+	$ ( '#searchfield' ).keyup (function (){
 		var inputLetters = {
 			userinput: $ ('#searchfield') .val( )
 		}
 		console.log(inputLetters)
+	
 
-		$.post ('/ajax', inputLetters, function(data){
 
-			console.log(data)
-			$('#displayname').empty()
+		if(inputLetters.userinput){
 
-			for (person in data){
-			$ ( '#displayname' ).append ('<option>' + data[person].firstname + " " + 
-				data[person].lastname + '</option>')
-			}
-		})
+		if(fireRequest) {
+			fireRequest = false
+
+			$.post ('/ajax', inputLetters, function(data){
+
+				console.log(data)
+				$('#displayname').empty()
+				$('#displaylist').empty()
+
+				for (person in data){
+					$ ( '#displayname' ).append ('<option>' + data[person].firstname + " " + 
+						data[person].lastname + '</option>')
+					$ ( '#displaylist' ).append ('<option>' + data[person].firstname + " " + 
+						data[person].lastname + '</option>')
+				}
+			})
+		}
+		setTimeout(function(){
+			fireRequest = true
+		}, 300)
+
+	}
 
 	})
+
 })
+
+
