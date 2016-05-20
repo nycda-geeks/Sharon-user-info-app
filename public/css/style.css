@@ -56,27 +56,37 @@ h2 {
 
 
 /* search2 */
-
+#descr {
+	width:100px;
+}
+#searchlist {
+	position: absolute;
+	margin-left:20px;
+	width:200px;
+}
 #personlist {
 	height:100%;
 	width:100%;
 }
-.newPerson {
-	position: relative;
-    color: #c3c0c0;
-    font-size: 14px;
-    line-height: 44px;
-    height: 44px;
-    width: 100%;
-    /*
-    padding-top: 0;
-    padding-bottom: 0;
-    z-index: 99;
-    cursor: pointer;
-    top: 100%;
-    overflow: hidden;
-    */
+#people {
+	margin:-7px 0 0 139px;
+	width:202px;
+	position: absolute;
+	height: 100%;
+	overflow: hidden;
+    z-index: 5;
 }
-.DropDownOption {
-	display:block;
+.newPerson {
+	border:1px #c3c0c0 solid;
+    color: black;
+    background-color: white;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    display:block;
+    padding:5px;
+}
+.newPerson:hover {
+	background-color: #c3c0c0;
+	color:white;
 }

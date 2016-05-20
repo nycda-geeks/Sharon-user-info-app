@@ -15,11 +15,11 @@ $ ( document ).ready( function () {
 				$.post ('/ajax', inputLetters, function(data){
 					console.log(data)
 
-					//$('#people').empty()
+					$('#people').empty()
 
 					for (person in data){
 						console.log(data[person].firstname)
-						$ ( '#people' ).append( '<div class="DropDownOption newPerson">' + data[person].firstname + " " + 
+						$ ( '#people' ).append( '<div class="newPerson">' + data[person].firstname + " " + 
 							data[person].lastname + '</div>' )
 					}
 					$ ( '.newPerson' ) .click( function() { 
