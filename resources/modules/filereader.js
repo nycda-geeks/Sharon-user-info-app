@@ -7,7 +7,7 @@ function JSONreader(filename, callback){
 	}
 	var parsedJSON = JSON.parse(data);
 
-	console.log("JSON file objects : " + parsedJSON.length)
+	//console.log("JSON file objects : " + parsedJSON.length)
 
 	callback(parsedJSON);
 	});

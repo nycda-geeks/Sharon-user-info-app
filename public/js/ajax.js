@@ -50,10 +50,17 @@ $ ( document ).ready( function () {
 				$('#displaylist').empty()
 
 				for (person in data){
-					$ ( '#displayname' ).append ('<option>' + data[person].firstname + " " + 
-						data[person].lastname + '</option>')
-					$ ( '#displaylist' ).append ('<option>' + data[person].firstname + " " + 
-						data[person].lastname + '</option>')
+
+					$ ( '#displayname' ).append( '<option>' + data[person].firstname + " " + 
+						data[person].lastname + '</option>' )
+
+					$ ( '#displaylist' ).append( '<option>' + data[person].firstname + " " + 
+						data[person].lastname + '</option>' )
+
+					$ ( 'option' ) .click( function() {
+						$('#searchfield').val($(this).val())
+					})
+					
 				}
 			})
 		}
