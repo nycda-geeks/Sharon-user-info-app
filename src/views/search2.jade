@@ -8,7 +8,8 @@ block content
 		form(id="personlist", name="searchUser", action="/result", method="post", autocomplete="off")
 			div.input
 				span.label Search name  
-				input(type="text", name="userinput", id="searchlist")
+				input#searchlist(type="text", name="userinput")
 			div#people
 			div.actions
 				input#button(type="submit", value="search")
+

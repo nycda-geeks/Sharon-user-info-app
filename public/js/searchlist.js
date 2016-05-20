@@ -1,20 +1,21 @@
+	var fireRequest = true
+
 $ ( document ).ready( function () {
 	console.log('dom is ready')
 
-	var fireRequest = true
-
-	$ ( '#searchlist' ).keyup (function (){
+	$ ( '#searchlist' ).on ( "keyup",function (){
 		var inputLetters = {
 			userinput: $ ('#searchlist') .val( )
 		}
 
-		console.log(inputLetters)
-		if(fireRequest) {
-			fireRequest = false
-			$.post ('/ajax', inputLetters, function(data){
-				console.log(data)
-				if(inputLetters.userinput){
-					$('#people').empty()
+		console.log('oo')
+		//if(inputLetters.userinput){
+			if(fireRequest) {
+				fireRequest = false
+				$.post ('/ajax', inputLetters, function(data){
+					console.log(data)
+
+					//$('#people').empty()
 
 					for (person in data){
 						console.log(data[person].firstname)
@@ -25,13 +26,13 @@ $ ( document ).ready( function () {
 						$('#searchlist').val($(this).text()) 
 						console.log($(this).text())
 					})
-				}
-			})
-			setTimeout(function(){
-				fireRequest = true
-			}, 300)
-		}
+				})
+				setTimeout(function(){
+					fireRequest = true
+				}, 300)
+			}
 
-	})
+		//}
 
+})
 })
