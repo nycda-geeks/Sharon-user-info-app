@@ -31,6 +31,12 @@ app.get('/search', function(req, res){
 
 } );
 
+// Extra search page - trying to make a new search bar with list
+app.get('/search2', function(req, res){ 
+
+	res.render('search2')
+
+} );
 
 // jQuery / AJAX
 app.post( '/ajax', ( req, res ) => {

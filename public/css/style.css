@@ -53,3 +53,30 @@ h2 {
 	background-color: white;
 	color: #79d279;
 }
+
+
+/* search2 */
+
+#personlist {
+	height:100%;
+	width:100%;
+}
+.newPerson {
+	position: relative;
+    color: #c3c0c0;
+    font-size: 14px;
+    line-height: 44px;
+    height: 44px;
+    width: 100%;
+    /*
+    padding-top: 0;
+    padding-bottom: 0;
+    z-index: 99;
+    cursor: pointer;
+    top: 100%;
+    overflow: hidden;
+    */
+}
+.DropDownOption {
+	display:block;
+}

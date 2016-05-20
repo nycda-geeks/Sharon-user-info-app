@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+	h2 Search users
+
+	div#formdiv
+		form(id="personlist", name="searchUser", action="/result", method="post", autocomplete="off")
+			div.input
+				span.label Search name  
+				input(type="text", name="userinput", id="searchlist")
+			div#people
+			div.actions
+				input#button(type="submit", value="search")

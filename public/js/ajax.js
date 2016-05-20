@@ -26,8 +26,7 @@
 
 $ ( document ).ready( function () {
 	console.log('dom is ready')
-
-
+	
 	var fireRequest = true
 
 	$ ( '#searchfield' ).keyup (function (){
@@ -35,42 +34,37 @@ $ ( document ).ready( function () {
 			userinput: $ ('#searchfield') .val( )
 		}
 		console.log(inputLetters)
-	
-
 
 		if(inputLetters.userinput){
 
-		if(fireRequest) {
-			fireRequest = false
+			if(fireRequest) {
+				fireRequest = false
 
-			$.post ('/ajax', inputLetters, function(data){
+				$.post ('/ajax', inputLetters, function(data){
 
-				console.log(data)
-				$('#displayname').empty()
-				$('#displaylist').empty()
+					console.log(data)
+					$('#displayname').empty()
+					$('#displaylist').empty()
 
-				for (person in data){
+					for (person in data){
+						$ ( '#displayname' ).append( '<option>' + data[person].firstname + " " + 
+							data[person].lastname + '</option>' )
 
-					$ ( '#displayname' ).append( '<option>' + data[person].firstname + " " + 
-						data[person].lastname + '</option>' )
-
-					$ ( '#displaylist' ).append( '<option>' + data[person].firstname + " " + 
-						data[person].lastname + '</option>' )
-
+						$ ( '#displaylist' ).append( '<option>' + data[person].firstname + " " + 
+							data[person].lastname + '</option>' )
+					}
 					$ ( 'option' ) .click( function() {
 						$('#searchfield').val($(this).val())
+						console.log('clicked')
 					})
-					
-				}
-			})
+				})
+			}
+			setTimeout(function(){
+				fireRequest = true
+			}, 300)
 		}
-		setTimeout(function(){
-			fireRequest = true
-		}, 300)
-
-	}
-
 	})
+
 
 })
 
