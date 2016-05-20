@@ -1,7 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var fs = require('fs')
-var filereader = require('./filereader.js')
+var filereader = require('./resources/modules/filereader.js')
 var app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -15,7 +15,7 @@ app.use(express.static('./public/css'))
 
 app.get('/', function(req, res){
 
-	filereader.JSONreader('./users.json', 
+	filereader.JSONreader('./resources/users.json', 
 		function (parsedJSON){
 			res.render('index', {names: parsedJSON})
 		} )
@@ -38,7 +38,7 @@ app.post( '/ajax', ( req, res ) => {
 	var showNames = {}
 	var totalUsers = []
 	
-	filereader.JSONreader('./users.json', 
+	filereader.JSONreader('./resources/users.json', 
 		function (parsedJSON){
 			//console.log(req.body.userinput)
 
@@ -77,7 +77,7 @@ app.post('/result', function(req, res){
 	var usersearch = req.body.userinput.toLowerCase()
 
 	console.log("post")
-	filereader.JSONreader('./users.json', function (parsedJSON){
+	filereader.JSONreader('./resources/users.json', function (parsedJSON){
 		// console.log('filereader werkt')
 
 		for( i=0; i<parsedJSON.length; i++ ){
@@ -126,11 +126,11 @@ app.post('/add', function(req,res){
 	var createEmail = req.body.createEmail
 
 	if ( createFirstname.length > 0 && createLastname.length > 0 && createEmail.length > 0 ) {
-		filereader.JSONreader('./users.json', function (parsedJSON){
-			console.log('pasredjson ' + parsedJSON)
+		filereader.JSONreader('./resources/users.json', function (parsedJSON){
+			console.log('parsedjson ' + parsedJSON)
 			parsedJSON.push({firstname: createFirstname, lastname: createLastname, email: createEmail})
 			console.log('pushedjson ' + parsedJSON)
-			fs.writeFile('./users.json', JSON.stringify(parsedJSON), function() {
+			fs.writeFile('./resources/users.json', JSON.stringify(parsedJSON), function() {
 				//res.send(parsedJSON)
 			})
 
