@@ -65,14 +65,14 @@ h2 {
 	width:200px;
 }
 #personlist {
-	height:100%;
+	
 	width:100%;
 }
 #people {
 	margin:-7px 0 0 139px;
 	width:202px;
 	position: absolute;
-	height: 100%;
+	
 	overflow: hidden;
     z-index: 5;
 }

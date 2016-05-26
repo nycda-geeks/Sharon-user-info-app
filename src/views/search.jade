@@ -7,7 +7,7 @@ block content
     form(name="searchUser", action="/result", method="post", autocomplete="off")
         div.input
             span.label Search name  
-            input(list="displayname", type="text", name="userinput", id="searchfield")
+            input#searchlist(list="displayname", type="text", name="userinput")
             datalist#displayname
         div.actions
             input#button(type="submit", value="search")

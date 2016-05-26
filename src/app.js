@@ -31,12 +31,14 @@ app.get('/search', function(req, res){
 
 } );
 
+
 // Extra search page - trying to make a new search bar with list
 app.get('/search2', function(req, res){ 
 
 	res.render('search2')
 
 } );
+
 
 // jQuery / AJAX
 app.post( '/ajax', ( req, res ) => {
@@ -69,18 +71,15 @@ app.post( '/ajax', ( req, res ) => {
 
 				} 
 			}
-
-		res.send(totalUsers)
-	})
+			res.send(totalUsers)
+		})
 
 })
-
 
 
 app.post('/result', function(req, res){
 
 	var storeUser = []
-	var names = {}
 	var usersearch = req.body.userinput.toLowerCase()
 
 	filereader.JSONreader('./resources/users.json', function (parsedJSON){
@@ -92,22 +91,22 @@ app.post('/result', function(req, res){
 			var achternaam = parsedJSON[i].lastname.toLowerCase()
 			var firstLastName = voornaam + " " + achternaam
 
-			var stringNr = voornaam.indexOf(usersearch)
-			var stringNr2 = achternaam.indexOf(usersearch)
-			var stringNr3 = firstLastName.indexOf(usersearch)
-
-			if( stringNr != -1 || stringNr2 != -1 || stringNr3 != -1 ){
-				names = parsedJSON[i]
-				storeUser.push(names)
+			if(usersearch == voornaam || usersearch == achternaam || usersearch == firstLastName){
+				storeUser.push(usersearch)
+				var userFirst = parsedJSON[i].firstname
+				var userLast = parsedJSON[i].lastname
+				console.log('pushed')
 			}
 		}
 
 		if(storeUser.length > 0){
-			res.send(storeUser)
-		} 
+			res.send("Name user: " + userFirst + " " + userLast)
+		} else {
+			res.send('No such user was found.')
+		}
 	} )
-
 } );
+
 
 
 

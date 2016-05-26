@@ -12,7 +12,7 @@ $ ( document ).ready( function () {
 		//if(inputLetters.userinput){
 			if(fireRequest) {
 				fireRequest = false
-				$.post ('/result', inputLetters, function(data){
+				$.post ('/ajax', inputLetters, function(data){
 					//console.log(data)
 
 					for (person in data){
@@ -29,8 +29,6 @@ $ ( document ).ready( function () {
 					fireRequest = true
 				}, 300)
 			}
-
-		//}
 
 })
 })
