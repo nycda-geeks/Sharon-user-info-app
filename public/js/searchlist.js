@@ -1,4 +1,4 @@
-	var fireRequest = true
+var fireRequest = true
 
 $ ( document ).ready( function () {
 	console.log('dom is ready')
@@ -7,15 +7,13 @@ $ ( document ).ready( function () {
 		var inputLetters = {
 			userinput: $ ('#searchlist') .val( )
 		}
-
+		$('#people').empty()
 		console.log('oo')
 		//if(inputLetters.userinput){
 			if(fireRequest) {
 				fireRequest = false
-				$.post ('/ajax', inputLetters, function(data){
-					console.log(data)
-
-					$('#people').empty()
+				$.post ('/result', inputLetters, function(data){
+					//console.log(data)
 
 					for (person in data){
 						console.log(data[person].firstname)
@@ -24,7 +22,7 @@ $ ( document ).ready( function () {
 					}
 					$ ( '.newPerson' ) .click( function() { 
 						$('#searchlist').val($(this).text()) 
-						console.log($(this).text())
+						//console.log($(this).text())
 					})
 				})
 				setTimeout(function(){

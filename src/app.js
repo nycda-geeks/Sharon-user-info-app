@@ -80,9 +80,9 @@ app.post( '/ajax', ( req, res ) => {
 app.post('/result', function(req, res){
 
 	var storeUser = []
+	var names = {}
 	var usersearch = req.body.userinput.toLowerCase()
 
-	console.log("post")
 	filereader.JSONreader('./resources/users.json', function (parsedJSON){
 		// console.log('filereader werkt')
 
@@ -92,20 +92,19 @@ app.post('/result', function(req, res){
 			var achternaam = parsedJSON[i].lastname.toLowerCase()
 			var firstLastName = voornaam + " " + achternaam
 
-			if(usersearch == voornaam || usersearch == achternaam 
-				|| usersearch == firstLastName){
-				storeUser.push(usersearch)
-				var userFirst = parsedJSON[i].firstname
-				var userLast = parsedJSON[i].lastname
-				console.log('pushed')
+			var stringNr = voornaam.indexOf(usersearch)
+			var stringNr2 = achternaam.indexOf(usersearch)
+			var stringNr3 = firstLastName.indexOf(usersearch)
+
+			if( stringNr != -1 || stringNr2 != -1 || stringNr3 != -1 ){
+				names = parsedJSON[i]
+				storeUser.push(names)
 			}
 		}
 
 		if(storeUser.length > 0){
-			res.send("Name user: " + userFirst + " " + userLast)
-		} else {
-			res.send('No such user was found.')
-		}
+			res.send(storeUser)
+		} 
 	} )
 
 } );

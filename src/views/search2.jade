@@ -1,15 +1,29 @@
-extends layout
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' type='text/css')
+		link(rel='stylesheet', href='style.css', type='text/css')
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js")
+		script(src="searchlist.js")
 
-block content
+	body
+		#navbar-fixed
+			a(href='/') Show users
+			a(href='http://localhost:3000/search') Search users
+			a(href='http://localhost:3000/search2') Search users 2
+			a(href='http://localhost:3000/create') Create users
+	#content
+		block content
 
-	h2 Search users
+			h2 Search users
 
-	div#formdiv
-		form(id="personlist", name="searchUser", action="/result", method="post", autocomplete="off")
-			div.input
-				span.label#descr Search name  
-				input#searchlist(type="text", name="userinput")
-			div#people
-			div.actions
-				input#button(type="submit", value="search")
+			div#formdiv
+				form(id="personlist", name="searchUser", action="/result", method="post", autocomplete="off")
+					div.input
+						span.label#descr Search name  
+						input#searchlist(type="text", name="userinput")
+					div#people
+					div.actions
+						input#button(type="submit", value="search")
 
